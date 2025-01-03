@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2024 Teruma Yamamoto <TRyamamototeruma@gmail.com>
+# SPDX-License-Identifier: BSD-3-Clause
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
@@ -13,24 +16,21 @@ class InternetSpeedPublisher(Node):
 
     def publish_speed(self):
         try:
-            # Speedtest インスタンス作成
+
             st = speedtest.Speedtest()
-            st.get_servers()  # サーバーリストを取得
-            best_server = st.get_best_server()  # 最適なサーバーを選択
-            
-            # インターネット速度を測定
-            download_speed = st.download() / 1e6  # Mbps
-            upload_speed = st.upload() / 1e6  # Mbps
+            st.get_servers()
+            best_server = st.get_best_server()
+
+            download_speed = st.download() / 1e6
+            upload_speed = st.upload() / 1e6
         except Exception as e:
             self.get_logger().error(f"Failed to measure speed: {e}")
             return
 
-        # トピックに速度情報をパブリッシュ
         msg = Float64MultiArray()
         msg.data = [download_speed, upload_speed]
         self.publisher_.publish(msg)
 
-        # ログ出力
         self.get_logger().info(f"Published speeds: Download: {download_speed:.2f} Mbps, Upload: {upload_speed:.2f} Mbps")
 
 
