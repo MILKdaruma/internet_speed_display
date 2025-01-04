@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 # SPDX-FileCopyrightText: 2024 Teruma Yamamoto <TRyamamototeruma@gmail.com>
 # SPDX-License-Identifier: BSD-3-Clause
+
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
 import speedtest
-
 
 class InternetSpeedPublisher(Node):
     def __init__(self):
@@ -33,14 +33,12 @@ class InternetSpeedPublisher(Node):
 
         self.get_logger().info(f"Published speeds: Download: {download_speed:.2f} Mbps, Upload: {upload_speed:.2f} Mbps")
 
-
 def main(args=None):
     rclpy.init(args=args)
     node = InternetSpeedPublisher()
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
