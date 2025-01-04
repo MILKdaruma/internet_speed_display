@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# SPDX-FileCopyrightText: 2024 Teruma Yamamoto <TRyamamototeruma@gmail.com>
+# SPDX-FileCopyrightText: 2025 Teruma Yamamoto <TRyamamototeruma@gmail.com>
 # SPDX-License-Identifier: BSD-3-Clause
 
 import rclpy

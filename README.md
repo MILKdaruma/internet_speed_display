@@ -113,7 +113,7 @@ https://qiita.com/koeri3/items/f85a617dcb6efebb2cab
 
 ハードウェア情報の取得方法
 
-https://chantastu.hatenablog.com/entry/2023/07/15/114657#2-CPU%E6%83%85%E5%A0%B1%E3%81%AE%E5%8F%96%E5%BE%97
+https://chantastu.hatenablog.com/entry/2023/07/15/114657
 
 # ライセンス
 
@@ -123,5 +123,5 @@ https://chantastu.hatenablog.com/entry/2023/07/15/114657#2-CPU%E6%83%85%E5%A0%B1
 
 https://github.com/ryuichiueda/slides_marp/tree/master/robosys2024
 
-🄫 2024 teruma yamamoto
+🄫 2025 teruma yamamoto
 
