@@ -3,12 +3,6 @@
 ## 目次
 - [概要](#概要)
 
-- [各ファイルの説明](#各ファイルの説明)
-
-- [クローン方法](#クローン方法)
-
-- [ディレクトリへの移動](#ディレクトリへの移動)
-
 - [実行方法](#実行方法)
 
 - [注意](#注意)
@@ -25,41 +19,10 @@
 
 このプログラムはユーザーの使用しているネットワークのダウンロード速度、アップロード速度を計測するものです.
 
-## 各ファイルの説明
-
-・setup.py
-
-スクリプトの登録やインストール設定を記述しています。
-
-・package.xml
-
-ROS 2パッケージのデータを定義するXMLファイルです。
-
-・.github/workflows/test.yml
-
-テストバッジのプログラムです。
-
-・test/test.bash
-
-正常に動くかのテストプログラムです。
-
-## クローン方法
-
-### リポジトリをクローン
-
-以下のコマンドをターミナル上で実行します。
-
+## 実行方法
 ```
 git clone https://github.com/MILKdaruma/robosys2024_ros2.git
 ```
-
-## ディレクトリへの移動
-
-```
-cd ~/ros2_ws
-```
-
-## 実行方法
 
 ```
 colcon build
@@ -70,15 +33,28 @@ source install/setup.bash
 ```
 
 ```
-ros2 run internet_speed_display internet_speed_publisher
+ros2 run internet_speed_display internet_speed_node
+
+```
+
+2つ目のターミナルで以下のコードを実行してください。
+
+
+```
+ros2 topic echo /internet_speed
 ```
 
 ## 実行結果
 
 ```
-Published speeds: Download: 91.43 Mbps, Upload: 80.75 Mbps
-Published speeds: Download: 80.24 Mbps, Upload: 77.32 Mbps
-Published speeds: Download: 85.82 Mbps, Upload: 82.75 Mbps
+data: 'Download Speed: 10.71 Mbps, Upload Speed: 10.38 Mbps'
+---
+data: 'Download Speed: 12.97 Mbps, Upload Speed: 8.93 Mbps'
+---
+data: 'Download Speed: 19.75 Mbps, Upload Speed: 11.44 Mbps'
+---
+data: 'Download Speed: 16.21 Mbps, Upload Speed: 18.45 Mbps'
+---
 ```
 
 ## 注意
