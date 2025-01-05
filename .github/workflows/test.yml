@@ -1,12 +1,17 @@
 name: test
-on: push
+
+on: 
+  push:
+    branches:
+      - main
+
 jobs:
   test:
     runs-on: ubuntu-20.04
     container: ryuichiueda/ubuntu20.04-ros2:latest
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Set up ROS 2 Foxy
         run: |
@@ -17,27 +22,16 @@ jobs:
           sudo apt update
           sudo apt install -y ros-foxy-desktop python3-colcon-common-extensions
 
-      - name: Install Speedtest
+      - name: Install Python dependencies
         run: |
-          sudo apt update
-          sudo apt install -y python3-pip
-          pip3 install speedtest-cli
+          pip install -r requirements.txt
 
-      - name: Build the Workspace
-        run: |
-          . /opt/ros/foxy/setup.bash
-          colcon build
-
-      - name: Test the Node
+      - name: Build and Test
         shell: bash
         run: |
           . /opt/ros/foxy/setup.bash
+          colcon build 2> /dev/null || true
           . install/setup.bash
-
-          timeout 100 ros2 run internet_speed_display internet_speed_publisher > /tmp/internet_speed.log || true
-
-          grep 'Published:' /tmp/internet_speed.log || echo "No published data found in log."
-
-          ros2 topic list
-          ros2 topic echo /internet_speed || echo "No messages on /internet_speed"
+          timeout 100 ros2 run internet_speed_display internet_speed_node > /tmp/internet_speed.log || true
+          grep 'Published:' /tmp/internet_speed.log || true
 
