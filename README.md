@@ -35,7 +35,6 @@ source install/setup.bash
 
 ```
 ros2 run internet_speed_display internet_speed_node
-
 ```
 
 2つ目のターミナルで以下のコードを実行してください。
@@ -64,15 +63,11 @@ data: 'Download Speed: 16.21 Mbps, Upload Speed: 18.45 Mbps'
 
 ・回線によってはエラーが出ることがあります。
 
-## 必要なソフトウェア
-
-・ros2
-
-・使用バージョン：foxy
 
 ## テスト環境
 
-Ubuntu 24.04
+Ubuntu 20.04
+ros2 foxy :
 
 ## 参考文献
 
