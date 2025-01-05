@@ -33,6 +33,11 @@ jobs:
         run: |
           . /opt/ros/foxy/setup.bash
           . install/setup.bash
+
           timeout 100 ros2 run internet_speed_display internet_speed_publisher > /tmp/internet_speed.log || true
+
           grep 'Published:' /tmp/internet_speed.log || echo "No published data found in log."
+
+          ros2 topic list
+          ros2 topic echo /internet_speed || echo "No messages on /internet_speed"
 
