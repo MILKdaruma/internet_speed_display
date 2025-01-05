@@ -12,7 +12,7 @@ class InternetSpeedNode(Node):
     def __init__(self):
         super().__init__('internet_speed_node')
         self.publisher_ = self.create_publisher(String, 'internet_speed', 10)
-        self.timer = self.create_timer(10.0, self.publish_speed)
+        self.timer = self.create_timer(3.0, self.publish_speed)
         self.get_logger().info('Internet Speed Node has started.')
 
     def publish_speed(self):
