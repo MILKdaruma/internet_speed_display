@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-20.04
-    container: ryuichiueda/ubuntu20.04-ros2:latest
+    container: ros:foxy  # 公式の ROS 2 Foxy Docker イメージを使用
 
     steps:
       - uses: actions/checkout@v2
