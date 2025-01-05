@@ -1,5 +1,6 @@
-# robosys2024_ros2
+# internet_speed_display
 ロボットシステム学　課題2
+インターネットの速度を計測するros2 パッケージです。
 ## 目次
 - [概要](#概要)
 
