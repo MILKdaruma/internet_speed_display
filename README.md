@@ -74,14 +74,17 @@ data: 'Download Speed: 16.21 Mbps, Upload Speed: 18.45 Mbps'
 
 
 ## テスト環境
+・GitHub Actions
 
 Ubuntu 22.04
 
-ros2 Humble（GitHub Actions）
+ros2 Humble
+
+・開発環境
 
 Ubuntu 20.04
 
-ros2 foxy (開発環境)
+ros2 foxy 
 
 ## 参考文献
 
