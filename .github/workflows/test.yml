@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-22.04
-    container: ros:foxy
+    container: ros:Humble
 
     steps:
       - name: Checkout repository
