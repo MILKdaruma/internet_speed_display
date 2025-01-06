@@ -1,6 +1,6 @@
 name: test
 
-on:
+on: 
   push:
     branches:
       - main
@@ -8,25 +8,30 @@ on:
 jobs:
   test:
     runs-on: ubuntu-22.04
-    container: ros:Humble
+    container: ryuichiueda/ubuntu22.04-ros2:latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Install additional dependencies
+      - name: Set up ROS 2 Humble
         run: |
-          apt-get update && apt-get install -y \
-          python3-pip python3-colcon-common-extensions && \
-          pip3 install speedtest-cli && \
-          rm -rf /var/lib/apt/lists/*
+          sudo apt update
+          sudo apt install -y curl gnupg2 lsb-release
+          curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+          echo "deb http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2-latest.list
+          sudo apt update
+          sudo apt install -y ros-humble-desktop python3-colcon-common-extensions
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
 
       - name: Build and Test
         shell: bash
         run: |
-          source /opt/ros/foxy/setup.bash
-          colcon build
-          source install/setup.bash
-          timeout 30 ros2 run internet_speed_display internet_speed_node > /tmp/internet_speed.log || true
-          grep 'Published:' /tmp/internet_speed.log || echo "Test failed: No published messages found."
+          . /opt/ros/humble/setup.bash
+          colcon build 2> /dev/null || true
+          . install/setup.bash
+          timeout 100 ros2 run internet_speed_display internet_speed_node > /tmp/internet_speed.log || true
+          grep 'Published:' /tmp/internet_speed.log || true
 

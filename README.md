@@ -27,14 +27,6 @@ git clone https://github.com/MILKdaruma/robosys2024_ros2.git
 ```
 
 ```
-colcon build
-```
-
-```
-source install/setup.bash
-```
-
-```
 ros2 run internet_speed_display internet_speed_node
 ```
 
@@ -67,9 +59,13 @@ data: 'Download Speed: 16.21 Mbps, Upload Speed: 18.45 Mbps'
 
 ## テスト環境
 
+Ubuntu 22.04
+
+ros2 Humble
+
 Ubuntu 20.04
 
-ros2 foxy 
+ros2 foxy (開発環境)
 
 ## 参考文献
 
