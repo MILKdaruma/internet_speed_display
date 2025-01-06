@@ -13,7 +13,8 @@ class InternetSpeedNode(Node):
         super().__init__('internet_speed_node')
         self.publisher_ = self.create_publisher(String, 'internet_speed', 10)
         self.timer = self.create_timer(3.0, self.publish_speed)
-        self.get_logger().info('Internet Speed Node has started.')
+
+        self.get_logger().set_level(rclpy.logging.LoggingSeverity.ERROR)
 
     def publish_speed(self):
         try:
@@ -28,7 +29,6 @@ class InternetSpeedNode(Node):
         msg = String()
         msg.data = speed_info
         self.publisher_.publish(msg)
-        self.get_logger().info(f'Published: {speed_info}')
 
 
 def main(args=None):
@@ -41,3 +41,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
